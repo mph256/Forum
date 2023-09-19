@@ -4,6 +4,7 @@ import com.mph.domain.dao.interfaces.DaoFactory;
 
 import com.mph.domain.dao.interfaces.RoleDao;
 import com.mph.domain.dao.interfaces.UserDao;
+import com.mph.domain.dao.interfaces.TagDao;
 
 public final class DaoFactoryImpl implements DaoFactory {
 
@@ -13,10 +14,13 @@ public final class DaoFactoryImpl implements DaoFactory {
 
 	private UserDao userDao;
 
+	private TagDao tagDao;
+
 	public DaoFactoryImpl() {
 
 		roleDao = new RoleDaoImpl();
 		userDao = new UserDaoImpl();
+		tagDao = new TagDaoImpl();
 
 	}
 
@@ -37,6 +41,11 @@ public final class DaoFactoryImpl implements DaoFactory {
 	@Override
 	public UserDao getUserDao() {
 		return userDao;
+	}
+
+	@Override
+	public TagDao getTagDao() {
+		return tagDao;
 	}
 
 }

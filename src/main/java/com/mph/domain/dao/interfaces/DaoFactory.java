@@ -6,4 +6,6 @@ public interface DaoFactory {
 
 	public UserDao getUserDao();
 
+	public TagDao getTagDao();
+
 }
