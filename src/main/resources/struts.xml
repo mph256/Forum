@@ -21,6 +21,15 @@
 			<result>/WEB-INF/jsp/Home.jsp</result>
     	</action>
 
+  		<action name="registration" class="com.mph.application.actions.registration.RegistrationAction" method="{1}">
+
+    		<result name="input">/WEB-INF/jsp/Registration.jsp</result>
+  	    	<result name="success" type="redirectAction">home</result>
+
+  	    	<allowed-methods>loadPage</allowed-methods>
+
+    	</action>
+
     </package>
 
 </struts>
