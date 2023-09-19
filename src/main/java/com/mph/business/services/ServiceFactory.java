@@ -4,6 +4,7 @@ import com.mph.business.services.interfaces.RoleService;
 import com.mph.business.services.interfaces.UserService;
 import com.mph.business.services.interfaces.RegistrationService;
 import com.mph.business.services.interfaces.DisconnectionService;
+import com.mph.business.services.interfaces.ConnectionService;
 
 import com.mph.domain.dao.interfaces.DaoFactory;
 
@@ -21,6 +22,8 @@ public final class ServiceFactory {
 
 	private DisconnectionService disconnectionService;
 
+	private ConnectionService connectionService;
+
 	private ServiceFactory() {
 
 		DaoFactory daoFactory = DaoFactoryImpl.getInstance();
@@ -29,6 +32,7 @@ public final class ServiceFactory {
 		userService = new UserServiceImpl(roleService, daoFactory.getUserDao());
 		registrationService = new RegistrationServiceImpl(userService);
 		disconnectionService = new DisconnectionServiceImpl(userService);
+		connectionService = new ConnectionServiceImpl(userService);
 
 	}
 
@@ -55,6 +59,10 @@ public final class ServiceFactory {
 
 	public DisconnectionService getDisconnectionService() {
 		return disconnectionService;
+	}
+
+	public ConnectionService getConnectionService() {
+		return connectionService;
 	}
 
 }
