@@ -1,0 +1,35 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence 
+             	http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0">
+
+    <persistence-unit name="forum">
+
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+		<class>com.mph.beans.Role</class>
+        <class>com.mph.beans.User</class> 
+        <class>com.mph.beans.Thread</class> 
+        <class>com.mph.beans.Tag</class> 
+        <class>com.mph.beans.Post</class> 
+
+        <properties>
+
+            <property name="javax.persistence.jdbc.driver" value="org.mariadb.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mariadb://localhost:3307/forum"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="javax.persistence.jdbc.password" value="admin"/>
+
+            <property name="javax.persistence.schema-generation.database.action" value="create"/>
+
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MariaDBDialect"/>
+
+            <property name="hibernate.show_sql" value="true"/>
+			<property name="hibernate.event.merge.entity_copy_observer" value="allow"/>
+
+        </properties>
+
+    </persistence-unit>
+
+</persistence>
