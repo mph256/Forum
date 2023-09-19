@@ -6,6 +6,7 @@ import com.mph.business.services.interfaces.RegistrationService;
 import com.mph.business.services.interfaces.DisconnectionService;
 import com.mph.business.services.interfaces.ConnectionService;
 import com.mph.business.services.interfaces.TagService;
+import com.mph.business.services.interfaces.ThreadService;
 
 import com.mph.domain.dao.interfaces.DaoFactory;
 
@@ -27,6 +28,8 @@ public final class ServiceFactory {
 
 	private TagService tagService;
 
+	private ThreadService threadService;
+
 	private ServiceFactory() {
 
 		DaoFactory daoFactory = DaoFactoryImpl.getInstance();
@@ -37,6 +40,7 @@ public final class ServiceFactory {
 		disconnectionService = new DisconnectionServiceImpl(userService);
 		connectionService = new ConnectionServiceImpl(userService);
 		tagService = new TagServiceImpl(daoFactory.getTagDao());
+		threadService = new ThreadServiceImpl(tagService, daoFactory.getThreadDao());
 
 	}
 
@@ -71,6 +75,10 @@ public final class ServiceFactory {
 
 	public TagService getTagService() {
 		return tagService;
+	}
+
+	public ThreadService getThreadService() {
+		return threadService;
 	}
 
 }
