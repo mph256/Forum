@@ -1,0 +1,273 @@
+body {
+	font-size: .9em;
+}
+
+main {
+	margin-bottom: 6.5em;
+}
+
+.nav {
+	background-color: #E67E30;
+}
+
+.navbar-brand, .navbar-brand:hover {
+	color: #ffffff;
+}
+
+.nav-item img {
+	width: 2em;
+	margin-top: -.3em;
+}
+
+.section-thread img {
+	width: 3em;
+	height: 100%;
+}
+
+.section-profile img {
+	width: 8em;
+}
+
+.form-redirect-connection, .form-redirect-profile {
+	margin-top: -.12em;
+}
+
+.tr-thread:hover {
+	cursor: pointer;
+}
+
+.btn-search-thread {
+	margin-bottom: 1em;
+}
+
+.btn-redirect-thread {
+	text-decoration: none;
+}
+
+.btn-show-form-edit-post {
+	margin-top: -.3em;
+}
+
+.btn-delete-post {
+	margin-top: -.3em;
+}
+
+@media all and (max-width: 576px) {
+
+	.thread-title {
+		margin-left: .8em;
+	}
+
+	.thread-tags {
+		margin-left: 1.3em;
+	}
+
+	.btn-show-form-edit-post {
+		margin-left: 1em;
+	}
+
+	.btn-delete-post {
+		margin-left: .5em;
+	}
+
+	.post-user-login {
+		margin-left: 2em;
+	}
+
+	.post-date-publication  {
+		margin-left: 2em;
+	}
+
+	.post-date-update  {
+		margin-left: -4.5em;
+	}
+
+	.btn-show-password {
+		margin-left: -6.3em;
+	}
+
+}
+
+@media all and (min-width: 576px) and (max-width: 768px) {
+
+	.thread-title {
+		margin-left: .9em;
+	}
+
+	.thread-tags {
+		margin-left: 1.55em;
+	}
+
+	.btn-show-form-edit-post {
+		margin-left: 1em;
+	}
+
+	.btn-delete-post {
+		margin-left: .4em;
+	}
+
+	.post-user-login {
+		margin-left: 2em;
+	}
+
+	.post-date-publication  {
+		margin-left: 2em;
+	}
+
+	.post-date-update  {
+		margin-left: -4em;
+	}
+
+	.btn-show-password {
+		margin-left: -4em;
+	}
+
+}
+
+@media all and (min-width: 768px) and (max-width: 992px) {
+
+	.thread-title {
+		margin-left: .25em;
+	}
+
+	.thread-tags {
+		margin-left: .5em;
+	}
+
+	.btn-show-form-edit-post {
+		margin-left: 1em;
+	}
+
+	.btn-delete-post {
+		margin-left: .5em;
+	}
+
+	.post-user-login {
+		margin-left: 1em;
+	}
+
+	.post-date-publication  {
+		margin-left: 1em;
+	}
+
+	.post-date-update  {
+		margin-left: -7.1em;
+	}
+
+	.btn-show-password {
+		margin-left: -8.3em;
+	}
+
+}
+
+@media all and (min-width: 992px) and (max-width: 1200px) {
+
+	.thread-title {
+		margin-left: -.6em;
+	}
+
+	.thread-tags {
+		margin-left: -.9em;
+	}
+
+	.btn-show-form-edit-post {
+		margin-left: .5em;
+	}
+
+	.btn-delete-post {
+		margin-left: .2em;
+	}
+
+	.post-user-login {
+		margin-left: -.5em;
+	}
+
+	.post-date-publication  {
+		margin-left: -.5em;
+	}
+
+	.post-date-update  {
+		margin-left: -5.1em;
+	}
+
+	.btn-show-password {
+		margin-left: -11.3em;
+	}
+
+}
+
+@media all and (min-width: 1200px) and (max-width: 1400px) {
+
+	.thread-title {
+		margin-left: -1.25em;
+	}
+
+	.thread-tags {
+		margin-left: -1.95em;
+	}
+
+	.btn-show-form-edit-post {
+		margin-left: -.6em;
+	}
+
+	.btn-delete-post {
+		margin-left: -.35em;
+	}
+
+	.post-user-login {
+		margin-left: -1.5em;
+	}
+
+	.post-date-publication  {
+		margin-left: -1.5em;
+	}
+
+	.post-date-update  {
+		margin-left: -9em;
+	}
+
+	.btn-show-password {
+		margin-left: -7.1em;
+	}
+
+}
+
+@media all and (min-width: 1400px) {
+
+	.thread-title {
+		margin-left: -1.85em;
+	}
+
+	.thread-tags {
+		margin-left: -3em;
+	}
+
+	.post-user-login {
+		margin-left: -2.7em;
+	}
+
+	.post-date-publication  {
+		margin-left: -2.7em;
+	}
+
+	.post-date-update  {
+		margin-left: -6.3em;
+	}
+
+	.btn-show-password {
+		margin-left: -13em;
+	}
+
+}
+
+.btn-show-form-edit-account {
+	margin-right: -.7em;
+}
+
+.btn-delete-account {
+	margin-left: -.7em;
+}
+
+.footer {
+	background-color:#f2f3f4;
+}
