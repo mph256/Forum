@@ -9,6 +9,36 @@
     <constant name="struts.action.extension" value=","/>
     <constant name="struts.custom.i18n.resources" value="messages"/>
 
+    <package name="json" namespace="/" extends="json-default" strict-method-invocation="true">
+
+		<action name="searchThread" class="com.mph.application.actions.thread.ThreadAction" method="searchThread">
+			<result type="json">
+				<param name="includeProperties">
+					^threads\[\d+\]\.id,
+					^threads\[\d+\]\.title,
+					^threads\[\d+\]\.lastUpdate,
+					^threads\[\d+\]\.user\.login,
+					^threads\[\d+\]\.tags\[\d+\]\.label,
+					^threads\[\d+\]\.posts\[\d+\]\.id
+				</param>
+			</result>
+		</action>
+
+		<action name="refreshThreads" class="com.mph.application.actions.thread.ThreadAction" method="refreshThreads">
+    		<result type="json">
+    			<param name="includeProperties">
+    				^threads\[\d+\]\.id,
+					^threads\[\d+\]\.title,
+					^threads\[\d+\]\.lastUpdate,
+					^threads\[\d+\]\.user\.login,
+					^threads\[\d+\]\.tags\[\d+\]\.label,
+					^threads\[\d+\]\.posts\[\d+\]\.id
+				</param>
+			</result>
+		</action>
+
+    </package>
+
     <package name="struts" namespace="/" extends="struts-default" strict-method-invocation="true">
 
         <default-action-ref name="index"/>
@@ -17,8 +47,8 @@
             <result type="redirectAction">home</result>
         </action>
 
-    	<action name="home" class="com.mph.application.actions.home.HomeAction">
-			<result>/WEB-INF/jsp/Home.jsp</result>
+		<action name="home" class="com.mph.application.actions.home.HomeAction">
+			<result name="input, success">/WEB-INF/jsp/Home.jsp</result>
     	</action>
 
 		<action name="registration" class="com.mph.application.actions.registration.RegistrationAction" method="{1}">
