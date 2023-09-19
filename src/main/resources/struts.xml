@@ -34,6 +34,15 @@
     		<result type="redirectAction">home</result>
     	</action>
 
+	    <action name="connection" class="com.mph.application.actions.connection.ConnectionAction" method="{1}">
+
+    		<result name="input">/WEB-INF/jsp/Connection.jsp</result>
+  	    	<result name="success" type="redirectAction">home</result>
+
+  	    	<allowed-methods>loadPage</allowed-methods>
+
+    	</action>
+
     </package>
 
 </struts>
