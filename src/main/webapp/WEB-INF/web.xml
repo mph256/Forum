@@ -27,6 +27,10 @@
 	    	<param-value>UTF-8</param-value>
 	    </init-param>
 	</filter>
+    <filter>
+	    <filter-name>CacheFilter</filter-name>
+	    <filter-class>com.mph.application.filters.CacheFilter</filter-class>
+	</filter> 
 
 	<filter-mapping>
 		<filter-name>struts2</filter-name>
@@ -35,6 +39,10 @@
 	<filter-mapping>
 		<filter-name>EncodingFilter</filter-name>
 		<url-pattern>*.jsp</url-pattern>
+	</filter-mapping>
+		<filter-mapping>
+	    <filter-name>CacheFilter</filter-name>
+	    <url-pattern>*.jsp</url-pattern>
 	</filter-mapping>
 
 </web-app>
