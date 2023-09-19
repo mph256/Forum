@@ -21,14 +21,14 @@
 			<result>/WEB-INF/jsp/Home.jsp</result>
     	</action>
 
-  		<action name="registration" class="com.mph.application.actions.registration.RegistrationAction" method="{1}">
+		<action name="registration" class="com.mph.application.actions.registration.RegistrationAction" method="{1}">
 
     		<result name="input">/WEB-INF/jsp/Registration.jsp</result>
   	    	<result name="success" type="redirectAction">home</result>
 
   	    	<allowed-methods>loadPage</allowed-methods>
 
-    	</action>
+		</action>
 
     	<action name="disconnection" class="com.mph.application.actions.disconnection.DisconnectionAction">
     		<result type="redirectAction">home</result>
@@ -40,6 +40,15 @@
   	    	<result name="success" type="redirectAction">home</result>
 
   	    	<allowed-methods>loadPage</allowed-methods>
+
+    	</action>
+
+   	    	<action name="profile" class="com.mph.application.actions.profile.ProfileAction" method="{1}">
+
+    	    <result name="forbidden, success2" type="redirectAction">home</result>
+    	    <result name="input, success">/WEB-INF/jsp/Profile.jsp</result>
+
+    		<allowed-methods>loadPage, editAccount, deleteAccount</allowed-methods>
 
     	</action>
 
