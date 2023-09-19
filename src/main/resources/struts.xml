@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+
+    <constant name="struts.enable.DynamicMethodInvocation" value="true"/>
+    <constant name="struts.devMode" value="true"/>
+    <constant name="struts.action.extension" value=","/>
+
+    <package name="struts" namespace="/" extends="struts-default" strict-method-invocation="true">
+
+        <default-action-ref name="index"/>
+
+        <action name="index">
+            <result type="redirectAction">home</result>
+        </action>
+
+    	<action name="home" class="com.mph.application.actions.home.HomeAction">
+			<result>/WEB-INF/jsp/Home.jsp</result>
+    	</action>
+
+    </package>
+
+</struts>
