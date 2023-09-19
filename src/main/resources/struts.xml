@@ -7,6 +7,7 @@
     <constant name="struts.enable.DynamicMethodInvocation" value="true"/>
     <constant name="struts.devMode" value="true"/>
     <constant name="struts.action.extension" value=","/>
+
     <constant name="struts.custom.i18n.resources" value="messages"/>
 
     <package name="json" namespace="/" extends="json-default" strict-method-invocation="true">
@@ -37,6 +38,66 @@
 			</result>
 		</action>
 
+		<action name="createPost" class="com.mph.application.actions.post.PostAction" method="createPost">
+    		<result type="json">
+    			<param name="includeProperties">
+    				^user\.login,
+    				^user\.role\.name,
+    				^thread\.posts\[\d+\]\.id,
+    				^thread\.posts\[\d+\]\.content,
+    				^thread\.posts\[\d+\]\.publicationDate,
+    				^thread\.posts\[\d+\]\.lastUpdate,
+    				^thread\.posts\[\d+\]\.user\.login,
+    				^thread\.posts\[\d+\]\.user\.profilePicture\.name
+    			</param>
+   			</result>
+    	</action>
+
+    	<action name="editPost" class="com.mph.application.actions.post.PostAction" method="editPost">
+    		<result type="json">
+    			<param name="includeProperties">
+    			   	^user\.login,
+    				^user\.role\.name,
+    				^post\.id,
+    				^post\.content,
+    				^post\.publicationDate,
+    				^post\.lastUpdate,
+    				^post\.user\.login,
+    				^post\.user\.profilePicture\.name
+    			</param>	
+    		</result>
+    	</action>
+
+   		<action name="deletePost" class="com.mph.application.actions.post.PostAction" method="deletePost">
+    		<result type="json">
+    			<param name="includeProperties">
+					^user\.login,
+	   				^user\.role\.name,
+	   				^thread\.posts\[\d+\]\.id,
+	   				^thread\.posts\[\d+\]\.content,
+	   				^thread\.posts\[\d+\]\.publicationDate,
+	   				^thread\.posts\[\d+\]\.lastUpdate,
+	   				^thread\.posts\[\d+\]\.user\.login,
+	   				^thread\.posts\[\d+\]\.user\.profilePicture\.name
+	   			</param>
+    		</result>
+    	</action>
+
+    	<action name="refreshPosts" class="com.mph.application.actions.post.PostAction" method="refreshPosts">
+			<result type="json">
+    			<param name="includeProperties">
+   					^user\.login,
+    				^user\.role\.name,
+    				^thread\.posts\[\d+\]\.id,
+    				^thread\.posts\[\d+\]\.content,
+    				^thread\.posts\[\d+\]\.publicationDate,
+    				^thread\.posts\[\d+\]\.lastUpdate,
+    				^thread\.posts\[\d+\]\.user\.login,
+    				^thread\.posts\[\d+\]\.user\.profilePicture\.name
+				</param>
+			</result>
+		</action>
+
     </package>
 
     <package name="struts" namespace="/" extends="struts-default" strict-method-invocation="true">
@@ -48,7 +109,14 @@
         </action>
 
 		<action name="home" class="com.mph.application.actions.home.HomeAction">
+
+			<interceptor-ref name="store">
+            	<param name="operationMode">RETRIEVE</param>
+        	</interceptor-ref>
+        	<interceptor-ref name="defaultStack"/>
+
 			<result name="input, success">/WEB-INF/jsp/Home.jsp</result>
+
     	</action>
 
 		<action name="registration" class="com.mph.application.actions.registration.RegistrationAction" method="{1}">
@@ -73,12 +141,27 @@
 
     	</action>
 
-   	    	<action name="profile" class="com.mph.application.actions.profile.ProfileAction" method="{1}">
+   	    <action name="profile" class="com.mph.application.actions.profile.ProfileAction" method="{1}">
 
     	    <result name="forbidden, success2" type="redirectAction">home</result>
     	    <result name="input, success">/WEB-INF/jsp/Profile.jsp</result>
 
     		<allowed-methods>loadPage, editAccount, deleteAccount</allowed-methods>
+
+    	</action>
+
+  		<action name="thread" class="com.mph.application.actions.thread.ThreadAction" method="{1}">
+
+			<interceptor-ref name="store">
+	            <param name="operationMode">STORE</param>
+	        </interceptor-ref>
+	        <interceptor-ref name="defaultStack"/>
+
+			<result name="input, forbidden" type="redirectAction">home</result>
+    		<result name="input2, forbidden2, success">/WEB-INF/jsp/Thread.jsp</result>
+    		<result name="success2" type="redirectAction">home</result>
+
+    		<allowed-methods>loadPage, createThread, deleteThread</allowed-methods>
 
     	</action>
 

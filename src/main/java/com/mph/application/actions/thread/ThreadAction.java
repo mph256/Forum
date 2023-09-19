@@ -21,6 +21,7 @@ import com.mph.business.services.ServiceFactory;
 
 import com.mph.business.services.interfaces.ThreadService;
 import com.mph.business.services.interfaces.TagService;
+import com.mph.business.services.interfaces.PostService;
 
 import com.mph.domain.beans.Thread;
 import com.mph.domain.beans.User;
@@ -48,6 +49,8 @@ public class ThreadAction extends ActionSupport implements ApplicationAware, Ses
 
 	private TagService tagService;
 
+	private PostService postService;
+
 	private Map<String, Object> session;
 
 	@Override
@@ -71,11 +74,29 @@ public class ThreadAction extends ActionSupport implements ApplicationAware, Ses
 
 		}
 
+		postService = (PostService) application.get("postService");
+
+		if(postService == null) {
+
+			postService = ServiceFactory.getInstance().getPostService();
+			application.put("postService", postService);
+
+		}
+
 	}
 
 	@Override
 	public void withSession(Map<String, Object> session) {
 		this.session = session;
+	}
+
+	@SkipValidation
+	public String loadPage() {
+
+		thread = threadService.getThreadById(id);
+
+		return "input2";
+
 	}
 
 	@SkipValidation
@@ -91,6 +112,46 @@ public class ThreadAction extends ActionSupport implements ApplicationAware, Ses
 		threads.addAll(threadService.getThreadsByTags(tagsToSearch));
 
 		return SUCCESS;
+
+	}
+
+	public String createThread() {
+
+		User user = (User) session.get("user");
+
+		if(user != null) {
+
+			thread = threadService.createThread(title, user, Arrays.stream(tags.split(" ")).collect(Collectors.toSet()));
+			postService.createPost(content, thread, user);
+
+			logger.info("Thread creation: " + thread.getId() + " -> user: " + user.getLogin());
+
+			return SUCCESS;
+
+		}
+
+		return "forbidden";
+
+	}
+
+	@SkipValidation
+	public String deleteThread() {
+
+		thread = threadService.getThreadById(id);
+
+		User user = (User) session.get("user");
+
+		if(user != null) {
+
+			threadService.deleteThread(thread);
+
+			logger.info("Thread deletion: " + thread.getId() + " -> user: " + user.getLogin());
+
+			return "success2";
+
+		}
+
+		return "forbidden2";
 
 	}
 
