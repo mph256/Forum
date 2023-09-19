@@ -8,4 +8,6 @@ public interface DaoFactory {
 
 	public TagDao getTagDao();
 
+	public ThreadDao getThreadDao();
+
 }
