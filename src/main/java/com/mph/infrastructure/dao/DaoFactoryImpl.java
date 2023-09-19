@@ -6,6 +6,7 @@ import com.mph.domain.dao.interfaces.RoleDao;
 import com.mph.domain.dao.interfaces.UserDao;
 import com.mph.domain.dao.interfaces.TagDao;
 import com.mph.domain.dao.interfaces.ThreadDao;
+import com.mph.domain.dao.interfaces.PostDao;
 
 public final class DaoFactoryImpl implements DaoFactory {
 
@@ -19,12 +20,15 @@ public final class DaoFactoryImpl implements DaoFactory {
 
 	private ThreadDao threadDao;
 
-	public DaoFactoryImpl() {
+	private PostDao postDao;
+
+	private DaoFactoryImpl() {
 
 		roleDao = new RoleDaoImpl();
 		userDao = new UserDaoImpl();
 		tagDao = new TagDaoImpl();
 		threadDao = new ThreadDaoImpl();
+		postDao = new PostDaoImpl();
 
 	}
 
@@ -55,6 +59,11 @@ public final class DaoFactoryImpl implements DaoFactory {
 	@Override
 	public ThreadDao getThreadDao() {
 		return threadDao;
+	}
+
+	@Override
+	public PostDao getPostDao() {
+		return postDao;
 	}
 
 }

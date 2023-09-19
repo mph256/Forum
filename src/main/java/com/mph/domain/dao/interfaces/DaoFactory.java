@@ -10,4 +10,6 @@ public interface DaoFactory {
 
 	public ThreadDao getThreadDao();
 
+	public PostDao getPostDao();
+
 }
