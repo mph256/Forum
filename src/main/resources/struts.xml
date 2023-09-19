@@ -30,6 +30,10 @@
 
     	</action>
 
+    	<action name="disconnection" class="com.mph.application.actions.disconnection.DisconnectionAction">
+    		<result type="redirectAction">home</result>
+    	</action>
+
     </package>
 
 </struts>
